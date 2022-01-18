@@ -1,0 +1,27 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: self-hosted
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: make
+      run: make
+    - name: my_current_processes
+      run: ./my_current_processes
+    - name: my_memory_util
+      run: ./my_memory_util
+    - name: my_version
+      run: ./my_version
+    - name: check files 
+      if: always()
+      run: ls 
+    
